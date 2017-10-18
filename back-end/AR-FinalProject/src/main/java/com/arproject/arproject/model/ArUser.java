@@ -2,10 +2,11 @@ package com.arproject.arproject.model;
 
 
 import javax.persistence.*;
+import java.net.URI;
 
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "aruser")
+public class ArUser {
 
     private int id;
     private String userName;
@@ -16,7 +17,7 @@ public class User {
     private String image;
 
   // *** POJO ***
-    public User() {}
+    public ArUser() {}
 
   // *** GETTERs/SETTERs ***
 
@@ -62,9 +63,9 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        User user = (User) o;
+        ArUser arUser = (ArUser) o;
 
-        return id == user.id;
+        return id == arUser.id;
     }
 
     @Override
@@ -75,7 +76,7 @@ public class User {
   // *** toString ***
     @Override
     public String toString() {
-        return "User{" +
+        return "ArUser{" +
                 "id=" + id +
                 ", userName='" + userName + '\'' +
                 ", name='" + name + '\'' +
