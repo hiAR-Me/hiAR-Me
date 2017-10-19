@@ -1,10 +1,9 @@
 package com.arproject.arproject.service;
 
-
 import com.arproject.arproject.model.ArUser;
-import com.arproject.arproject.model.UserObject;
+import com.arproject.arproject.model.ArUserFile;
 import com.arproject.arproject.repository.ArUserRepository;
-import com.arproject.arproject.repository.UserObjectRepository;
+import com.arproject.arproject.repository.ArUserFileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,21 +17,21 @@ public class ArUserServiceImpl implements ArUserService {
     ArUserRepository arUserRepository;
 
     @Autowired
-    UserObjectRepository userObjectRepository;
+    ArUserFileRepository arUserFileRepository;
 
 // ========== ArUser Methods ==========
 
   // ----- Find user Methods -----
     @Transactional
     @Override
-    public ArUser findById(int id) {
+    public ArUser findArUserById(int id) {
         ArUser arUser = arUserRepository.findOne(id);
-        arUser.getUserObjects().size();
+        arUser.getArUserFiles().size();
         return arUser;
     }
 
     @Override
-    public ArUser findByUserName(String userName) {
+    public ArUser findByArUserName(String userName) {
         List<ArUser> allArUsers = arUserRepository.findAll();
 
         for(ArUser aUser:allArUsers) {
@@ -46,53 +45,53 @@ public class ArUserServiceImpl implements ArUserService {
   // ----- Add and Update ArUser -----
     @Transactional
     @Override
-    public ArUser addUser(ArUser arUser) {
+    public ArUser addArUser(ArUser arUser) {
         return arUserRepository.save(arUser);
     }
 
     @Transactional
     @Override
-    public ArUser updateUser(ArUser arUser) {
+    public ArUser updateArUser(ArUser arUser) {
         return arUserRepository.save(arUser);
     }
 
   // ----- Delete User and All Users -----
     @Transactional
     @Override
-    public void deleteUser(int id) {
+    public void deleteArUser(int id) {
         arUserRepository.delete(id);
     }
 
     @Transactional
     @Override
-    public void deleteAllUsers() {
+    public void deleteAllArUsers() {
         arUserRepository.deleteAll();
     }
 
-// ========== UserObject Methods ==========
+// ========== ArUserFile Methods ==========
 
   // ----- User addNewObject
     @Override
-    public ArUser addNewObject(UserObject userObject) {
-            userObjectRepository.save(userObject);
-        ArUser arUser = arUserRepository.findOne(userObject.getArUser().getId());
-            arUser.getUserObjects().add(userObject);
+    public ArUser addNewFile(ArUserFile arUserFile) {
+            arUserFileRepository.save(arUserFile);
+        ArUser arUser = arUserRepository.findOne(arUserFile.getArUser().getId());
+            arUser.getArUserFiles().add(arUserFile);
             arUserRepository.save(arUser);
 
-        return findById(userObject.getArUser().getId());
+        return findArUserById(arUserFile.getArUser().getId());
 
     }
 
   // ----- User deleteObject -----
     @Override
-    public ArUser deleteObject(int arUserId, int objectId) {
-        UserObject userObject = userObjectRepository.findOne(objectId);
-            userObjectRepository.delete(objectId);
+    public ArUser deleteFile(int arUserId, int objectId) {
+        ArUserFile arUserFile = arUserFileRepository.findOne(objectId);
+            arUserFileRepository.delete(objectId);
         ArUser arUser = arUserRepository.findOne(arUserId);
-            arUser.getUserObjects().remove(userObject);
+            arUser.getArUserFiles().remove(arUserFile);
             arUserRepository.save(arUser);
 
-        return findById(arUserId);
+        return findArUserById(arUserId);
     }
 
 }

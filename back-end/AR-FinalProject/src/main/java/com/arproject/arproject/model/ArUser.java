@@ -16,7 +16,7 @@ public class ArUser {
     private String github;
     private String portfolio;
     private String image;
-    private List<UserObject> userObjects = new ArrayList<>();
+    private List<ArUserFile> arUserFiles = new ArrayList<>();
 
   // *** POJO ***
     public ArUser() {}
@@ -60,12 +60,12 @@ public class ArUser {
     public void setImage(String image) { this.image = image; }
 
     @OneToMany(mappedBy = "aruser", fetch = FetchType.EAGER)
-    public List<UserObject> getUserObjects() {
-        return userObjects;
+    public List<ArUserFile> getArUserFiles() {
+        return arUserFiles;
     }
 
-    public void setUserObjects(List<UserObject> userObjects) {
-        this.userObjects = userObjects;
+    public void setArUserFiles(List<ArUserFile> arUserFiles) {
+        this.arUserFiles = arUserFiles;
     }
 
     // * * * * * * * * *
@@ -96,7 +96,7 @@ public class ArUser {
                 ", github='" + github + '\'' +
                 ", portfolio='" + portfolio + '\'' +
                 ", image='" + image + '\'' +
-                ", userObjects=" + userObjects +
+                ", arUserFiles=" + arUserFiles +
                 '}';
     }
 }
