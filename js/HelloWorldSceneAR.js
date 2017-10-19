@@ -20,6 +20,10 @@ import {
   Viro3DObject,
 } from 'react-viro';
 
+import MLScene from './components/MLScene'
+import CYScene from './components/CYScene'
+import BAScene from './components/BAScene'
+
 var HelloWorldSceneAR = React.createClass({
   getInitialState() {
     return {
@@ -31,7 +35,7 @@ var HelloWorldSceneAR = React.createClass({
     return (
       <ViroARScene onTrackingInitialized={()=>{this.setState({text : "hiAR.me"})}}>
       <ViroAmbientLight color="#ffffff" intensity={200}/>
-        <ViroText
+        {/* <ViroText
           text={this.state.text}
           scale={[.5, .5, .5]}
           position={[0, .5, -1]}
@@ -48,40 +52,13 @@ var HelloWorldSceneAR = React.createClass({
             loop: true,
             delay: 0  //delay before starting loop
             }}
-         />
+         /> */}
 
-         <ViroPortalScene id='MLScene' passable={true} dragType="FixedDistance" onDrag={()=>{}}>
-           <ViroPortal position={[0, 0, -1]} scale={[.1, .1, .1]}>
-             <Viro3DObject source={require('./portal_res/portal_ship/portal_ship.vrx')}
-               resources={[require('./portal_res/portal_ship/portal_ship_diffuse.png'),
-                           require('./portal_res/portal_ship/portal_ship_normal.png'),
-                           require('./portal_res/portal_ship/portal_ship_specular.png')]}
-               type="VRX"/>
-           </ViroPortal>
-           <Viro360Image source={require("./portal_res/360_island.jpg")} />
-         </ViroPortalScene>
+        <MLScene />
 
-         <ViroPortalScene id= 'CYScene' passable={true} dragType="FixedDistance" onDrag={()=>{}}>
-           <ViroPortal position={[-1.5, 0, -1]} scale={[.1, .1, .1]}>
-             <Viro3DObject source={require('./portal_res/portal_wood_frame/portal_wood_frame.vrx')}
-               resources={[require('./portal_res/portal_wood_frame/portal_wood_frame_diffuse.png'),
-                           require('./portal_res/portal_wood_frame/portal_wood_frame_normal.png'),
-                           require('./portal_res/portal_wood_frame/portal_wood_frame_specular.png')]}
-               type="VRX"/>
-           </ViroPortal>
-           <Viro360Image source={require("./portal_res/360_wide.jpg")} />
-         </ViroPortalScene>
+        <CYScene />
 
-         <ViroPortalScene id='BAScene' passable={true} dragType="FixedDistance" onDrag={()=>{}}>
-           <ViroPortal position={[1, 0, -1]} scale={[.5, .5, .5]}>
-             <Viro3DObject source={require('./portal_res/portal_archway/portal_archway.vrx')}
-               resources={[require('./portal_res/portal_archway/portal_archway_diffuse.png'),
-                           require('./portal_res/portal_archway/portal_archway_normal.png'),
-                           require('./portal_res/portal_archway/portal_archway_specular.png')]}
-               type="VRX"/>
-           </ViroPortal>
-           <Viro360Image source={require("./portal_res/360_church.jpg")} />
-         </ViroPortalScene>
+        <BAScene />
 
       </ViroARScene>
     );
