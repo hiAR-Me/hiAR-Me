@@ -31,7 +31,7 @@ public class ArUserServiceImpl implements ArUserService {
     }
 
     @Override
-    public ArUser findByArUserName(String userName) {
+    public ArUser findByUserName(String userName) {
         List<ArUser> allArUsers = arUserRepository.findAll();
 
         for(ArUser aUser:allArUsers) {

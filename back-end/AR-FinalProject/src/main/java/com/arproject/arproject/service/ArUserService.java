@@ -7,7 +7,7 @@ public interface ArUserService {
 
   // *** ArUser ***
     ArUser findArUserById(int id);
-    ArUser findByArUserName(String userName);
+    ArUser findByUserName(String userName);
     ArUser addArUser(ArUser arUser);
     ArUser updateArUser(ArUser arUser);
     void deleteArUser(int id);
