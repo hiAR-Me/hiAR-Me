@@ -1,6 +1,7 @@
 package com.arproject.arproject.controller;
 
 import com.arproject.arproject.model.ArUser;
+import com.arproject.arproject.repository.UserObjectRepository;
 import com.arproject.arproject.service.ArUserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ public class ArUserControllerApi {
 
     @Autowired
     ArUserService arUserService;
+
+    @Autowired
+    UserObjectRepository userObjectRepository;
 
   // --- JSON to Java Obj ---
     private ObjectMapper objMap = new ObjectMapper();

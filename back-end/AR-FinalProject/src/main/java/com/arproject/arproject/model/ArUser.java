@@ -2,7 +2,8 @@ package com.arproject.arproject.model;
 
 
 import javax.persistence.*;
-import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "aruser")
@@ -15,8 +16,7 @@ public class ArUser {
     private String github;
     private String portfolio;
     private String image;
-
-    //TODO: Add more class variables
+    private List<UserObject> userObjects = new ArrayList<>();
 
   // *** POJO ***
     public ArUser() {}
@@ -59,7 +59,16 @@ public class ArUser {
 
     public void setImage(String image) { this.image = image; }
 
-  // * * * * * * * * *
+    @OneToMany(mappedBy = "aruser", fetch = FetchType.EAGER)
+    public List<UserObject> getUserObjects() {
+        return userObjects;
+    }
+
+    public void setUserObjects(List<UserObject> userObjects) {
+        this.userObjects = userObjects;
+    }
+
+    // * * * * * * * * *
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -76,6 +85,7 @@ public class ArUser {
     }
 
   // *** toString ***
+
     @Override
     public String toString() {
         return "ArUser{" +
@@ -86,6 +96,7 @@ public class ArUser {
                 ", github='" + github + '\'' +
                 ", portfolio='" + portfolio + '\'' +
                 ", image='" + image + '\'' +
+                ", userObjects=" + userObjects +
                 '}';
     }
 }
