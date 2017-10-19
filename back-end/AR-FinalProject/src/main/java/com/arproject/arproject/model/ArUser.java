@@ -16,6 +16,8 @@ public class ArUser {
     private String portfolio;
     private String image;
 
+    //TODO: Add more class variables
+
   // *** POJO ***
     public ArUser() {}
 
