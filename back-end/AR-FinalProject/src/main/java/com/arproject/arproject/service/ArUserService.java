@@ -1,15 +1,21 @@
 package com.arproject.arproject.service;
 
 import com.arproject.arproject.model.ArUser;
+import com.arproject.arproject.model.ArUserFile;
 
 public interface ArUserService {
 
-    ArUser findById(int id);
+  // *** ArUser ***
+    ArUser findArUserById(int id);
     ArUser findByUserName(String userName);
-    ArUser addUser(ArUser arUser);
-    ArUser updateUser(ArUser arUser);
-    void deleteUser(int id);
+    ArUser addArUser(ArUser arUser);
+    ArUser updateArUser(ArUser arUser);
+    void deleteArUser(int id);
 
-  // -- for development --
-    void deleteAllUsers();
+    // -- for development --
+    void deleteAllArUsers();
+
+  // *** ArUserFile ***
+    ArUser addNewFile(ArUserFile arUserFile);
+    ArUser deleteFile(int arUserId, int fileId);
 }
