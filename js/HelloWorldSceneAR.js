@@ -17,7 +17,7 @@ import {
   ViroUtils,
   ViroPortal,
   ViroPortalScene,
-  Viro3DObject,
+  Viro3DObject
 } from 'react-viro';
 
 import MLScene from './components/MLScene'
