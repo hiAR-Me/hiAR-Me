@@ -1,0 +1,20 @@
+Complete ArUser object:
+
+{
+	"id":null;
+	"userName": null;
+	"name": null;
+	"resume": null;
+	"github": null;
+	"portfolio": null;
+	"image": null;
+	"arUserFiles":[
+		{
+			"id": null;
+			"fileType": null;
+			"fileDescription": null;
+			"arUserFile": null;
+			"arUser": null;
+		}
+	]
+}
