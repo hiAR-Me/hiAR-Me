@@ -34,32 +34,30 @@ export default class MLScene extends Component {
 
   render() {
     return (
-      <ViroARPlane minHeight={.5} minWidth={.5} >
-      <ViroNode position={[ 0, 1, -5]} scale={[ 1, 1, 1]} dragType='FixedDistance' onDrag={()=>{}} transformBehaviors='billboard'>
-        <ViroPortalScene position={[ 0, 1, -5 ]} passable={true}>
-          <ViroPortal position={[ 0, -1, 1]} scale={[.5, .5, .5]}>
-            <Viro3DObject source={require('../portal_res/portal_ufo/ufo.obj')}
-              resources={[require('../portal_res/portal_ufo/ufo_diffuse2_glow.png'),
+      <ViroNode position={[ 0, 1, -5]} scale={[ 1, 1, 1]} dragType='FixedDistance' onDrag={()=>{}}       transformBehaviors='billboard'>
+          <ViroPortalScene position={[ 0, 1, -5 ]} passable={true}>
+            <ViroPortal position={[ 0, 0, -1]} scale={[.5, .5, .5]}>
+              <Viro3DObject source={require('../portal_res/portal_ufo/ufo.obj')}
+                resources={[require('../portal_res/portal_ufo/ufo_diffuse2_glow.png'),
                            require('../portal_res/portal_ufo/ufo_diffuse.png'),
                            require('../portal_res/portal_ufo/ufo_diffuse2.png'),
                            require('../portal_res/portal_ufo/ufo_diffuse_glow.png'),
                            require('../portal_res/portal_ufo/ufo_normal.png'),
                            require('../portal_res/portal_ufo/ufo_spec.png')]}
-              position={[ 0, 1, -5]}
-              scale={[.3, .3, .3]}
-              animation={{
-                name:'rotate',
-                run: true,
-                loop: true
-              }}
-              type="OBJ"/>
-          </ViroPortal>
+                position={[ 0, 1, -5]}
+                scale={[.3, .3, .3]}
+                animation={{
+                  name:'rotateUFO',
+                  run: true,
+                  loop: true
+                }}
+                type="OBJ"/>
+            </ViroPortal>
           <Viro360Image source={require("../portal_res/360_space.jpg")} />
         </ViroPortalScene>
-      <SmokeEmitter run={true} location={[0, 1, -5]} power={5.0}/>
-
+        <SmokeEmitter run={true} location={[0, 1, -5]} power={5.0}/>
       </ViroNode>
-    </ViroARPlane>
+
     )
   }
   //
@@ -75,7 +73,7 @@ ViroAnimations.registerAnimations({
   //                           opacity: 1.0},
   //               easing:"Bounce",
   //               duration: 1000},
-  rotate:{properties:{rotateY:"+=90"}, duration:1000},
+  rotateUFO:{properties:{rotateY:"+=90"}, duration:1000},
   // shrink: {properties:{scaleX:0.5, scaleY:0.5, scaleZ:0,
   //                           opacity: 1.0},
   //               easing:"Bounce",
