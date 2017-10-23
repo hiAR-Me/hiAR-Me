@@ -1,13 +1,13 @@
 package com.arproject.arproject.controller;
 
 import com.arproject.arproject.model.ArUser;
+import com.arproject.arproject.model.ArUserFile;
 import com.arproject.arproject.service.ArUserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-
 
 @RestController
 public class ArUserControllerApi {
@@ -23,7 +23,7 @@ public class ArUserControllerApi {
     public ArUser addUser(@RequestBody String json) throws IOException {
         ArUser newArUser = objMap.readValue(json, ArUser.class);
 
-        return arUserService.addUser(newArUser);
+        return arUserService.addArUser(newArUser);
     }
 
   // *** EDIT USER ***
@@ -33,7 +33,15 @@ public class ArUserControllerApi {
         ArUser existingUserData = arUserService.findByUserName(userName);
         updatesToUser.setId(existingUserData.getId());
 
-        return arUserService.updateUser(updatesToUser);
+        return arUserService.updateArUser(updatesToUser);
+    }
+
+    @PostMapping("/api/update_user/{userName}/add_file")
+    public ArUser updateArUserAddFile(@PathVariable("userName") String userName, @RequestBody String json) throws IOException {
+        ArUserFile newArUserFile = objMap.readValue(json, ArUserFile.class);
+        ArUser foundArUser = arUserService.findByUserName(userName);
+            newArUserFile.setArUser(foundArUser);
+        return arUserService.addNewFile(newArUserFile);
     }
 
   // *** GET USER ***
@@ -46,7 +54,7 @@ public class ArUserControllerApi {
     @DeleteMapping("/api/delete_user/{userName}")
     public String deleteOneUser(@PathVariable("userName") String userName) {
         int userId = arUserService.findByUserName(userName).getId();
-        arUserService.deleteUser(userId);
+        arUserService.deleteArUser(userId);
 
         return "USER DELETED";
     }
@@ -55,7 +63,7 @@ public class ArUserControllerApi {
     @DeleteMapping("/api/delete_all_users/{deleteCode}")
     public String deleteAllUsers(@PathVariable("deleteCode") Integer deleteCode) {
         if (deleteCode.equals(11022017)) {
-            arUserService.deleteAllUsers();
+            arUserService.deleteAllArUsers();
         }
         return "DATABASE DELETED";
     }

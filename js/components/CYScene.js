@@ -31,14 +31,14 @@ var CYScene = React.createClass({
   render: function() {
     return (
       <ViroPortalScene id= 'CYScene' passable={true} dragType="FixedDistance" onDrag={()=>{}}>
-        <ViroPortal position={[-1, 0, -1]} scale={[.1, .1, .1]}>
+        {/* <ViroPortal position={[-1, 0, -1]} scale={[.1, .1, .1]}>
           <Viro3DObject source={require('../portal_res/portal_archway/portal_archway.vrx')}
             resources={[require('../portal_res/portal_archway/portal_archway_diffuse.png'),
                         require('../portal_res/portal_archway/portal_archway_normal.png'),
                         require('../portal_res/portal_archway/portal_archway_specular.png')]}
             type="VRX"/>
         </ViroPortal>
-        <Viro360Video source={require("../portal_res/360_surf.mp4")} />
+        <Viro360Video source={require("../portal_res/360_surf.mp4")} /> */}
       </ViroPortalScene>
     );
   },

@@ -62,8 +62,8 @@ class BAScene extends Component {
       <ViroPortalScene id='BAScene' passable={true} dragType="FixedDistance" onDrag={() => {}}>
         <ViroPortal position={[1, 0, 0]} scale={[.5, .5, .5]} rotation={[0, 90, 0]}>
           <Viro3DObject
-          source={require('../portal_res/portal_archway/portal_archway.vrx')}
-          resources={[require('../portal_res/portal_archway/portal_archway_diffuse.png'), require('../portal_res/portal_archway/portal_archway_normal.png'), require('../portal_res/portal_archway/portal_archway_specular.png')]} type="VRX"/>
+          source={require('../portal_res/portal_wood_frame/portal_wood_frame.vrx')}
+          resources={[require('../portal_res/portal_wood_frame/portal_wood_frame_diffuse.png'), require('../portal_res/portal_wood_frame/portal_wood_frame_normal.png'), require('../portal_res/portal_wood_frame/portal_wood_frame_specular.png')]} type="VRX"/>
         </ViroPortal>
         <Viro360Image source={require("../res/mountainscape-360_6_grid.jpg")}/>
 
