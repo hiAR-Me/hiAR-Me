@@ -32,11 +32,11 @@ var BAScene = React.createClass({
     return (
       <ViroPortalScene id='BAScene' passable={true} dragType="FixedDistance" onDrag={()=>{}}>
         <ViroPortal position={[-1, 1, -1]} scale={[.5, .5, .5]}>
-          <Viro3DObject source={require('../portal_res/portal_archway/portal_archway.vrx')}
+          {/* <Viro3DObject source={require('../portal_res/portal_archway/portal_archway.vrx')}
             resources={[require('../portal_res/portal_archway/portal_archway_diffuse.png'),
                         require('../portal_res/portal_archway/portal_archway_normal.png'),
                         require('../portal_res/portal_archway/portal_archway_specular.png')]}
-            type="VRX"/>
+            type="VRX"/> */}
         </ViroPortal>
         <Viro360Image source={require("../portal_res/360_church.jpg")} />
       </ViroPortalScene>

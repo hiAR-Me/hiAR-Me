@@ -7,6 +7,7 @@ import {StyleSheet} from 'react-native';
 import {
   ViroARScene,
   ViroText,
+  ViroImage,
   ViroVideo,
   ViroAnimations,
   ViroSceneNavigator,
@@ -18,11 +19,14 @@ import {
   ViroPortal,
   ViroPortalScene,
   Viro3DObject,
+  ViroARPlaneSelector,
+  ViroNode
 } from 'react-viro';
 
+import SmokeEmitter from './components/SmokeEmitter'
 import MLScene from './components/MLScene'
-import CYScene from './components/CYScene'
-import BAScene from './components/BAScene'
+// import CYScene from './components/CYScene'
+// import BAScene from './components/BAScene'
 
 var HelloWorldSceneAR = React.createClass({
   getInitialState() {
@@ -54,11 +58,12 @@ var HelloWorldSceneAR = React.createClass({
             }}
          /> */}
 
-        <MLScene />
+          <MLScene />
 
-        <CYScene />
+   
+        {/* <CYScene />
 
-        <BAScene />
+        <BAScene /> */}
 
       </ViroARScene>
     );
@@ -69,29 +74,29 @@ var HelloWorldSceneAR = React.createClass({
     },
 
 });
-
-ViroAnimations.registerAnimations({
-  // define the name
-  grow: {properties:{scaleX:1.0, scaleY:1.0, scaleZ:0,
-                            opacity: 1.0},
-                easing:"Bounce",
-                duration: 1000},
-  rotate:{properties:{rotateZ:"+=45"}, duration:1000},
-  shrink: {properties:{scaleX:0.5, scaleY:0.5, scaleZ:0,
-                            opacity: 1.0},
-                easing:"Bounce",
-                duration: 1000},
-  growAndShrink: [["grow", "shrink"]]  //array of animated movements
-});
-
-var styles = StyleSheet.create({
-  helloWorldTextStyle: {
-  fontFamily: 'Arial',
-  fontSize: 30,
-  color: '#ffffff',
-  textAlignVertical: 'center',
-  textAlign: 'center',
-  },
-});
+//
+// ViroAnimations.registerAnimations({
+//   // define the name
+//   grow: {properties:{scaleX:1.0, scaleY:1.0, scaleZ:0,
+//                             opacity: 1.0},
+//                 easing:"Bounce",
+//                 duration: 1000},
+//   rotate:{properties:{rotateZ:"+=45"}, duration:1000},
+//   shrink: {properties:{scaleX:0.5, scaleY:0.5, scaleZ:0,
+//                             opacity: 1.0},
+//                 easing:"Bounce",
+//                 duration: 1000},
+//   growAndShrink: [["grow", "shrink"]]  //array of animated movements
+// });
+//
+// var styles = StyleSheet.create({
+//   helloWorldTextStyle: {
+//   fontFamily: 'Arial',
+//   fontSize: 30,
+//   color: '#ffffff',
+//   textAlignVertical: 'center',
+//   textAlign: 'center',
+//   },
+// });
 
 module.exports = HelloWorldSceneAR;
