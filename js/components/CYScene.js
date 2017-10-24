@@ -5,25 +5,7 @@ import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';
 
 import {
-  ViroARScene,
-  ViroText,
-  ViroVideo,
-  ViroAnimations,
-  ViroSceneNavigator,
-  ViroScene,
-  ViroAmbientLight,
-  Viro360Video,
-  Viro360Image,
-  ViroUtils,
-  ViroPortal,
-  ViroPortalScene,
-  Viro3DObject,
-  ViroDirectionalLight,
-  Text,
-  ViroButton, 
-  ViroImage,
-  ViroMaterials,
-  ViroNode
+  ViroARScene, ViroText, ViroVideo, ViroAnimations, ViroSceneNavigator, ViroScene, ViroAmbientLight, Viro360Video, Viro360Image, ViroUtils, ViroPortal, ViroPortalScene, Viro3DObject, ViroDirectionalLight, Text, ViroButton, ViroImage, ViroMaterials, ViroNode
 } from 'react-viro';
 
 ViroMaterials.createMaterials({
@@ -35,7 +17,7 @@ ViroMaterials.createMaterials({
 });
 
 class CYScene extends Component {
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -51,72 +33,96 @@ class CYScene extends Component {
 
   render(){
     return (
-      <ViroPortalScene id= 'CYScene' passable={true}                 dragType="FixedDistance" onDrag={()=>{}}>
+      <ViroPortalScene id= 'CYScene' passable={true}                  dragType="FixedDistance" onDrag={()=>{}}>
+
+      <ViroPortal position={[0, -1, -1]} scale={[.3, .3, .3]}>
+      
+              <Viro3DObject source={require('../portal_res/portal_archway/portal_archway.vrx')}
+                    resources={[require('../portal_res/portal_archway/portal_archway_diffuse.png'),
+                    require('../portal_res/portal_archway/portal_archway_normal.png'),
+                    require('../portal_res/portal_archway/portal_archway_specular.png')]}
+                  type="VRX"
+              />  
+      
+      </ViroPortal>
 
       <Viro360Image 
-      source={require("../portal_res/Chad360Scene/tiles.jpg")} 
-      // rotation={[0, 45, 0]}
-      // format="RGBA8"
+        source={require("../portal_res/Chad360Scene/streetball.jpg")} 
       />
 
-      <Viro3DObject 
-      source={require('../portal_res/Chad3DObjects/IronMan.obj')}
-      resources={[require('../portal_res/Chad3DObjResources/IronMan.mtl'),
-      require('../portal_res/Chad3DObjResources/ironman.png')]}
-      scale={[0.01, 0.04, 0.01]}
-      position={[0, 0, .3]}
-      type="OBJ" 
+      <ViroNode
+        position={[0,0,0]}
+      >
+      <ViroText
+        text="Chad's World"
+        textAlign="center"
+        textAlignVertical="top"
+        textLineBreakMode="justify"
+        textClipMode="clipToBounds"
+        color="#000000"
+        width={6} height={6}
+        style={{fontFamily:"Arial", fontSize:20, color:"#0000FF"}}
+        position={[0,1,0]}
       />
 
-          <ViroImage
-          source={require("../portal_res/ChadButton/click_me.png")}
-          position={[0,0,0]}
-          height={.5}
-          width={1}
+      <ViroImage
+          source={require("../portal_res/Chad2DImages/kobe.png")}
+          animation={{
+            name:'getBiggerAndSmaller',
+            run:true, 
+            loop: true, 
+            delay: 0
+          }}           
+          position={[0,.05,0]}
+          height={.3}
+          width={.7}
           transformBehaviors={["billboardY"]}
-          onTap={this._onButtonTap}
-          />
+      />
 
-          <ViroText
-          text="Chad's World"
-          textAlign="center"
-          textAlignVertical="top"
-          textLineBreakMode="justify"
-          textClipMode="clipToBounds"
-          color="#000000"
-          width={6} height={6}
-          style={{fontFamily:"Arial", fontSize:20, color:"#0000FF"}}
-          position={[0,.2,0]}
-          />
+      <ViroImage
+          source={require("../portal_res/Chad2DImages/basketballhoop.png")}     
+          position={[0,-.5,0]}
+          height={.8}
+          width={.3}
+          transformBehaviors={["billboardY"]}
+
+      />
 
 
 
-        <ViroPortal position={[0, -1, -1]} scale={[.3, .3, .3]}>
+      </ViroNode>
 
-          <Viro3DObject source={require('../portal_res/portal_archway/portal_archway.vrx')}
-              resources={[require('../portal_res/portal_archway/portal_archway_diffuse.png'),
-              require('../portal_res/portal_archway/portal_archway_normal.png'),
-              require('../portal_res/portal_archway/portal_archway_specular.png')]}
-            type="VRX"
-          />  
-
-        </ViroPortal>
       </ViroPortalScene>
     );
   }
 }
 
 ViroAnimations.registerAnimations({
-  grow: {properties:{scaleX:1.0, scaleY:1.0, scaleZ:0,
-                            opacity: 1.0},
-                easing:"Bounce",
-                duration: 1000},
-  rotate:{properties:{rotateZ:"+=45"}, duration:1000},
-  shrink: {properties:{scaleX:0.5, scaleY:0.5, scaleZ:0,
-                            opacity: 1.0},
-                easing:"Bounce",
-                duration: 1000},
-  growAndShrink: [["grow", "shrink"]]
+  getBigger: {
+    properties: {
+      scaleX: 1.0,
+      scaleY: 1.0,
+      scaleZ: 0,
+      opacity: 1.0},
+    easing: "Bounce",
+    duration: 2000},
+  getSmaller: {
+    properties: {
+      scaleX: 0.5,
+      scaleY: 0.5,
+      scaleZ: 0,
+      opacity: 1.0},
+    easing: "EaseIn",
+    duration: 2000},
+  getBiggerAndSmaller: [
+    ["getBigger", "getSmaller"]],
+
+  spinBall: {
+    properties: {
+      rotateY: 360,
+      opacity: 1},
+      easing: "Linear",
+      duration: 2000}
 });
 
 var styles = StyleSheet.create({
@@ -149,4 +155,18 @@ module.exports = CYScene;
 // scale={[0.1, 0.1, 0.01]}
 // position={[0, 0, .3]}
 // type="OBJ" 
+// />
+
+// <Viro3DObject 
+// // source={require('../portal_res/Chad3DObjects/basketball.obj')}
+// // materials={["basketball"]}        
+// // animation={{
+// //   name: 'spinBall',
+// //   run: true,
+// //   loop: true,
+// //   delay: 0
+// // }}
+// // scale={[0.005, 0.005, 0.005]}
+// // position={[1, 0, -1]}
+// // type="OBJ" 
 // />

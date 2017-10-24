@@ -18,19 +18,15 @@ import {
   ViroUtils,
   ViroPortal,
   ViroPortalScene,
-<<<<<<< HEAD
-  Viro3DObject
-=======
   Viro3DObject,
   ViroARPlaneSelector,
   ViroNode
->>>>>>> 7790cff187ce2703fc59d36fe161ae097219bcfc
 } from 'react-viro';
 
 import SmokeEmitter from './components/SmokeEmitter'
-import MLScene from './components/MLScene'
-// import CYScene from './components/CYScene'
-import BAScene from './components/BAScene'
+// import MLScene from './components/MLScene'
+import CYScene from './components/CYScene'
+// import BAScene from './components/BAScene'
 
 var HelloWorldSceneAR = React.createClass({
   getInitialState() {
@@ -62,10 +58,10 @@ var HelloWorldSceneAR = React.createClass({
             }}
          /> */}
 
-          <MLScene />
+      
+        <MLScene />
 
-
-        {/* <CYScene /> */}
+        <CYScene />
 
         <BAScene />
 
