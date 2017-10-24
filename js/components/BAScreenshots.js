@@ -32,7 +32,7 @@ class BAScene extends Component {
       dialog: [
         "Welcome! Click the RED Button",
         "It Worked!  Try Again!",
-        "Click the BLUE button to see how I am made!",
+        "Click the BLUE button to see how the Red button is made!",
         "I made a click counter to help with my dialogue",
         "Based on the counter number I change what I say",
         "The blue button only works at specified counter numbers",
@@ -44,12 +44,6 @@ class BAScene extends Component {
       visibleScreenshot2: false
     }
   }
-  // getInitialState() {
-  //   return {
-  //     text : "Initializing AR..."
-  //   };
-  // },
-
 
   handleClick = (source) => {
     const { dialog, counter } = this.state;
@@ -62,9 +56,6 @@ class BAScene extends Component {
       }
     }
 
-
-// you need a blue button and more dialog
-// dialog should indicate when the blue button makes changes.
   handleBlueClick = (source) => {
     const { counter } = this.state;
     if (counter == (2 || 3 || 4)) {
@@ -84,8 +75,6 @@ class BAScene extends Component {
       })
     }
   }
-
-
 
   render() {
     const { dialog, counter, screenshot, visibleBtn, visibleScreenshot1, visibleScreenshot2 } = this.state;
@@ -135,7 +124,7 @@ class BAScene extends Component {
                 textLineBreakMode="justify"
                 textClipMode="clipToBounds"
                 color="#ffffff"
-                width={1} height={2}
+                width={1.3} height={2}
                 style={{fontFamily:"San Francisco", fontSize:10, color:"#282828"}}
                 position={[.5, -.1, 0]}/>
               <ViroImage height={.75} width={1.5} position={[.6, .6, -.2]}
@@ -143,30 +132,16 @@ class BAScene extends Component {
                 source={require("../res/chat_bubble.png")}/>
             </ViroNode>
           </ViroNode>
-
-
           <ViroImage height={.6} width={2} position={[4, -1, 0]}
             placeholderSource={require("../res/ScreenShotBtn.png")}
             source={require("../res/ScreenShotBtn.png")}
             transformBehaviors={["billboardY"]}
             visible={visibleScreenshot1}/>
-
-              <ViroNode position={[-2,0,0]}
-                transformBehaviors={["billboardY"]}>
-
-                <ViroImage height={1.3} width={2} position={[1.8, 0, ]}
-                  placeholderSource={require("../res/ViroNodes.png")}
-                  source={require("../res/ViroNodes.png")}
-                  transformBehaviors={["billboardY"]}/>
-                <ViroImage height={1.3} width={1.4} position={[0, 0, 0]}
-                  placeholderSource={require("../res/BlueScreenShot.png")}
-                  source={require("../res/BlueScreenShot.png")}
-                  transformBehaviors={["billboardY"]}/>
-                <ViroImage height={1.3} width={2} position={[-1.8, 0, 0]}
-                  placeholderSource={require("../res/AnimationScreenShot.png")}
-                  source={require("../res/AnimationScreenShot.png")}
-                  transformBehaviors={["billboardY"]}/>
-              </ViroNode>
+            <ViroImage height={1.3} width={2} position={[4, -1, 0]}
+              placeholderSource={require("../res/ViroNodes.png")}
+              source={require("../res/ViroNodes.png")}
+              transformBehaviors={["billboardY"]}
+              visible={visibleScreenshot2}/>
 
       </ViroPortalScene>
     );
@@ -174,25 +149,6 @@ class BAScene extends Component {
 };
 
 ViroAnimations.registerAnimations({
-  grow: {
-    properties: {
-      scaleX: 1.0,
-      scaleY: 1.0,
-      scaleZ: 0,
-      opacity: 1.0},
-    easing: "Bounce",
-    duration: 1000},
-  shrink: {
-    properties: {
-      scaleX: 0.5,
-      scaleY: 0.5,
-      scaleZ: 0,
-      opacity: 1.0},
-    easing: "Bounce",
-    duration: 1000},
-  growAndShrink: [
-    ["grow", "shrink"]], //array of animated movements
-
   floatUp: {
     properties:{
       positionX: 0,
@@ -207,8 +163,25 @@ ViroAnimations.registerAnimations({
       positionZ: 0},
     easing: "EaseInEaseOut",
     duration: 800},
-  floatUpAndDown: [
-    ["floatUp", "floatDown"]],
+  floatUpAndDown: [["floatUp", "floatDown"]], //array of animated movement arrays
+
+    grow: {
+      properties: {
+        scaleX: 1.0,
+        scaleY: 1.0,
+        scaleZ: 0,
+        opacity: 1.0},
+      easing: "Bounce",
+      duration: 1000},
+    shrink: {
+      properties: {
+        scaleX: 0.5,
+        scaleY: 0.5,
+        scaleZ: 0,
+        opacity: 1.0},
+      easing: "Bounce",
+      duration: 1000},
+    growAndShrink: [["grow", "shrink"]],
 
   rotate: {
     properties: {
@@ -218,7 +191,7 @@ ViroAnimations.registerAnimations({
 
 var styles = StyleSheet.create({
   brandonTextStyle: {
-    fontFamily: 'depixelklein',
+    fontFamily: 'San Francisco',
     fontSize: 30,
     color: '#ffffff',
     textAlignVertical: 'center',
