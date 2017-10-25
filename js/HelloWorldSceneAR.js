@@ -58,8 +58,8 @@ var HelloWorldSceneAR = React.createClass({
             }}
          /> */}
 
-      
         <MLScene />
+
 
         <CYScene />
 
