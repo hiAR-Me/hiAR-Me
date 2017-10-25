@@ -24,9 +24,9 @@ import {
 } from 'react-viro';
 
 import SmokeEmitter from './components/SmokeEmitter'
-import MLScene from './components/MLScene'
+// import MLScene from './components/MLScene'
 import CYScene from './components/CYScene'
-import BAScene from './components/BAScene'
+// import BAScene from './components/BAScene'
 
 var HelloWorldSceneAR = React.createClass({
   getInitialState() {
@@ -59,11 +59,11 @@ var HelloWorldSceneAR = React.createClass({
          /> */}
 
       
-        <MLScene />
+        {/*<MLScene />*/}
 
         <CYScene />
 
-        <BAScene />
+        {/*<BAScene />*/}
 
       </ViroARScene>
     );
