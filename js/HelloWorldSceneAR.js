@@ -32,13 +32,8 @@ class HelloWorldSceneAR extends Component{
 constructor(){
   super()
   this.state= {
-    formVis: false
   }
 }
-
-  // _handlePress = (event) =>{
-  //   this.setState({formVis: true})
-  // }
 
   render() {
     return (
