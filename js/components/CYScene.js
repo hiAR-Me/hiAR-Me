@@ -8,13 +8,13 @@ import {
   ViroARScene, ViroText, ViroVideo, ViroAnimations, ViroSceneNavigator, ViroScene, ViroAmbientLight, Viro360Video, Viro360Image, ViroUtils, ViroPortal, ViroPortalScene, Viro3DObject, ViroDirectionalLight, Text, ViroButton, ViroImage, ViroMaterials, ViroNode
 } from 'react-viro';
 
-ViroMaterials.createMaterials({
-  basketball: {
-    shininess: 2.0,
-    lightingModel: "Lambert",
-    diffuseTexture: require('../portal_res/ChadTextures/orangecolor.jpg'),
-  }
-});
+// ViroMaterials.createMaterials({
+//   basketball: {
+//     shininess: 2.0,
+//     lightingModel: "Lambert",
+//     diffuseTexture: require('../portal_res/ChadTextures/orangecolor.jpg'),
+//   }
+// });
 
 class CYScene extends Component {
 
@@ -35,7 +35,7 @@ class CYScene extends Component {
     return (
       <ViroPortalScene id= 'CYScene' passable={true}                  dragType="FixedDistance" onDrag={()=>{}}>
 
-      <ViroPortal position={[0, -1, -1]} scale={[.3, .3, .3]}>
+      <ViroPortal position={[0, .5, 3]} scale={[.3, .3, .3]}>
       
               <Viro3DObject source={require('../portal_res/portal_archway/portal_archway.vrx')}
                     resources={[require('../portal_res/portal_archway/portal_archway_diffuse.png'),
@@ -47,23 +47,12 @@ class CYScene extends Component {
       </ViroPortal>
 
       <Viro360Image 
-        source={require("../portal_res/Chad360Scene/streetball.jpg")} 
+        source={require("../portal_res/Chad360Scene/tiles.jpg")} 
       />
 
       <ViroNode
         position={[0,0,0]}
       >
-      <ViroText
-        text="Chad's World"
-        textAlign="center"
-        textAlignVertical="top"
-        textLineBreakMode="justify"
-        textClipMode="clipToBounds"
-        color="#000000"
-        width={6} height={6}
-        style={{fontFamily:"Arial", fontSize:20, color:"#0000FF"}}
-        position={[0,1,0]}
-      />
 
       <ViroImage
           source={require("../portal_res/Chad2DImages/kobe.png")}
@@ -73,7 +62,7 @@ class CYScene extends Component {
             loop: true, 
             delay: 0
           }}           
-          position={[0,.05,0]}
+          position={[2,.03,-2]}
           height={.3}
           width={.7}
           transformBehaviors={["billboardY"]}
@@ -81,12 +70,39 @@ class CYScene extends Component {
 
       <ViroImage
           source={require("../portal_res/Chad2DImages/basketballhoop.png")}     
-          position={[0,-.5,0]}
+          position={[2,-.8,-2]}
           height={.8}
           width={.3}
           transformBehaviors={["billboardY"]}
 
       />
+
+
+      <ViroImage
+      source={require("../portal_res/Chad2DImages/viewcode.png")}     
+      position={[1.5,-.8,-2]}
+      height={.8}
+      width={.8}
+      transformBehaviors={["billboardY"]}
+
+      />
+
+      </ViroNode>
+
+      <ViroNode
+      position={[-6,0,3]}      
+      >
+
+
+
+      <ViroImage
+      source={require("../portal_res/Chad2DImages/findoutmore.png")}     
+      position={[1.5,-.8,-2]}
+      height={.8}
+      width={.8}
+      transformBehaviors={["billboardY"]}
+      />
+
 
 
 
@@ -169,4 +185,16 @@ module.exports = CYScene;
 // // scale={[0.005, 0.005, 0.005]}
 // // position={[1, 0, -1]}
 // // type="OBJ" 
+// />
+
+// <ViroText
+// text="Chad's World"
+// textAlign="center"
+// textAlignVertical="top"
+// textLineBreakMode="justify"
+// textClipMode="clipToBounds"
+// color="#000000"
+// width={6} height={6}
+// style={{fontFamily:"Arial", fontSize:20, color:"#0000FF"}}
+// position={[0,1,0]}
 // />
