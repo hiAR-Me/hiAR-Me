@@ -8,14 +8,6 @@ import {
   ViroARScene, ViroText, ViroVideo, ViroAnimations, ViroSceneNavigator, ViroScene, ViroAmbientLight, Viro360Video, Viro360Image, ViroUtils, ViroPortal, ViroPortalScene, Viro3DObject, ViroDirectionalLight, Text, ViroButton, ViroImage, ViroMaterials, ViroNode
 } from 'react-viro';
 
-// ViroMaterials.createMaterials({
-//   basketball: {
-//     shininess: 2.0,
-//     lightingModel: "Lambert",
-//     diffuseTexture: require('../portal_res/ChadTextures/orangecolor.jpg'),
-//   }
-// });
-
 class CYScene extends Component {
 
   constructor(props) {
@@ -37,7 +29,8 @@ class CYScene extends Component {
   render(){
     const { showCode } = this.state;
     return (
-      <ViroPortalScene id= 'CYScene' passable={true}                  dragType="FixedDistance" onDrag={()=>{}}>
+      <ViroPortalScene id= 'CYScene' passable={true}                  
+      dragType="FixedDistance" onDrag={()=>{}}>
 
 {/*VIRO PORTAL*/}
 
@@ -240,3 +233,11 @@ module.exports = CYScene;
 // transformBehaviors={["billboardY"]}
 
 // />
+
+// ViroMaterials.createMaterials({
+//   basketball: {
+//     shininess: 2.0,
+//     lightingModel: "Lambert",
+//     diffuseTexture: require('../portal_res/ChadTextures/orangecolor.jpg'),
+//   }
+// });
