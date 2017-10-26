@@ -24,7 +24,7 @@ import {
 } from 'react-viro';
 
 import SmokeEmitter from './components/SmokeEmitter'
-import MLScene from './components/MLScene'
+// import MLScene from './components/MLScene'
 // import CYScene from './components/CYScene'
 import BAScene from './components/BAScene'
 
@@ -39,7 +39,7 @@ constructor(){
     return (
       <ViroARScene onTrackingInitialized={()=>{this.setState({text : "hiAR.me"})}}>
         <ViroAmbientLight color="#ffffff" intensity={200}/>
-        <MLScene />
+        {/* <MLScene /> */}
         {/* <CYScene /> */}
         <BAScene />
       </ViroARScene>

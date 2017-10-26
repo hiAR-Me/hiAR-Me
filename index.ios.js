@@ -48,6 +48,8 @@ export default class ViroSample extends Component {
   constructor() {
     super();
 
+
+// DONT FORGET TO MAKE COMMENTS INPUT FIELD
     this.state = {
       navigatorType : defaultNavigatorType,
       sharedProps : sharedProps,
