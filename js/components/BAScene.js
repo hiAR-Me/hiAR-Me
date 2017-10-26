@@ -1,6 +1,7 @@
 'use strict';
 
 import React, {Component} from 'react';
+import Tutorial from "./Tutorial"
 
 import {StyleSheet} from 'react-native';
 
@@ -98,76 +99,7 @@ class BAScene extends Component {
           resources={[require('../portal_res/portal_wood_frame/portal_wood_frame_diffuse.png'), require('../portal_res/portal_wood_frame/portal_wood_frame_normal.png'), require('../portal_res/portal_wood_frame/portal_wood_frame_specular.png')]} type="VRX"/>
         </ViroPortal>
         <Viro360Image source={require("../res/mountainscape-360_6_grid.jpg")}/>
-
-        <ViroImage height={.6} width={.9} position={[3, .5, -1]} rotationZ={45}
-          placeholderSource={require("../res/hiAR_banner.png")}
-          source={require("../res/hiAR_banner.png")}
-          transformBehaviors={["billboardY"]}/>
-
-        <ViroImage height={.25} width={.6} position={[3, 0, -1]}
-          placeholderSource={require("../res/btn.png")}
-          source={require("../res/btn.png")}
-          transformBehaviors={["billboardY"]}
-          onClick={this.handleClick}/>
-
-        <ViroImage height={.25} width={.6} position={[3, -.3, -1]}
-          placeholderSource={require("../res/btn_blue.png")}
-          source={require("../res/btn_blue.png")}
-          transformBehaviors={["billboardY"]}
-          onClick={this.handleBlueClick}
-          visible={visibleBtn}/>
-
-          {/* My Face and Chat Bubble */}
-          <ViroNode position={[4,0,0]}
-            transformBehaviors={["billboardY"]}>
-            <ViroNode
-              animation={{name: 'floatUpAndDown',
-                          run: true,
-                          loop: true,
-                          delay: 0 }}>
-              <ViroImage height={.5} width={.4} position={[0, 0, -.05]}
-                placeholderSource={require("../res/Brandon.png")}
-                source={require("../res/Brandon.png")}/>
-              <ViroText
-                text={text}
-                textAlign="left"
-                textAlignVertical="top"
-                textLineBreakMode="justify"
-                textClipMode="clipToBounds"
-                color="#ffffff"
-                width={1} height={2}
-                style={{fontFamily:"San Francisco", fontSize:10, color:"#282828"}}
-                position={[.5, -.1, 0]}/>
-              <ViroImage height={.75} width={1.5} position={[.6, .6, -.2]}
-                placeholderSource={require("../res/chat_bubble.png")}
-                source={require("../res/chat_bubble.png")}/>
-            </ViroNode>
-          </ViroNode>
-
-
-          <ViroImage height={.6} width={2} position={[4, -1, 0]}
-            placeholderSource={require("../res/ScreenShotBtn.png")}
-            source={require("../res/ScreenShotBtn.png")}
-            transformBehaviors={["billboardY"]}
-            visible={visibleScreenshot1}/>
-
-              <ViroNode position={[-2,0,0]}
-                transformBehaviors={["billboardY"]}>
-
-                <ViroImage height={1.3} width={2} position={[1.8, 0, ]}
-                  placeholderSource={require("../res/ViroNodes.png")}
-                  source={require("../res/ViroNodes.png")}
-                  transformBehaviors={["billboardY"]}/>
-                <ViroImage height={1.3} width={1.4} position={[-1.8, 0, 0]}
-                  placeholderSource={require("../res/BlueScreenShot.png")}
-                  source={require("../res/BlueScreenShot.png")}
-                  transformBehaviors={["billboardY"]}/>
-                <ViroImage height={1.3} width={2} position={[0, 0, 0]}
-                  placeholderSource={require("../res/AnimationScreenShot.png")}
-                  source={require("../res/AnimationScreenShot.png")}
-                  transformBehaviors={["billboardY"]}/>
-              </ViroNode>
-
+        <Tutorial/>
       </ViroPortalScene>
     );
   }
@@ -214,16 +146,6 @@ ViroAnimations.registerAnimations({
     properties: {
       rotateZ: "+=45"},
     duration: 1000}
-});
-
-var styles = StyleSheet.create({
-  brandonTextStyle: {
-    fontFamily: 'depixelklein',
-    fontSize: 30,
-    color: '#ffffff',
-    textAlignVertical: 'center',
-    textAlign: 'center'
-  }
 });
 
 module.exports = BAScene;
