@@ -40,8 +40,8 @@ constructor(){
       <ViroARScene onTrackingInitialized={()=>{this.setState({text : "hiAR.me"})}}>
         <ViroAmbientLight color="#ffffff" intensity={200}/>
         {/* <MLScene /> */}
-        {/* <CYScene /> */}
-        <BAScene />
+        <CYScene />
+        {/*<BAScene />*/}
       </ViroARScene>
     )
   }

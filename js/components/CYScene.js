@@ -13,7 +13,9 @@ class CYScene extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showCode: false   
+      showCode: false , 
+      showResume: false,
+      showResumeButton: true 
     }
   }
 
@@ -25,6 +27,22 @@ class CYScene extends Component {
     )
   }
 
+  _handleResumeClick = (source) => {
+    if (this.state.showResume === false) {
+      this.setState({showResume: true})
+    } else (
+      this.setState({showResume: false})
+    )
+  }
+
+  // _handleResumeButton = (source) => {
+  //   if (this.state.showResumeButton === true){
+  //     this.setState({showResumeButton: false})
+  //   } else (
+  //     this.setState({showResumeButton: true})
+  //   )
+  // }
+
 
   render(){
     const { showCode } = this.state;
@@ -34,7 +52,7 @@ class CYScene extends Component {
 
 {/*VIRO PORTAL*/}
 
-      <ViroPortal position={[0, .5, -2]} scale={[.3, .3, .3]}>
+      <ViroPortal position={[0, .2, -2]} scale={[.3, .3, .3]}>
       
               <Viro3DObject source={require('../portal_res/portal_archway/portal_archway.vrx')}
                     resources={[require('../portal_res/portal_archway/portal_archway_diffuse.png'),
@@ -59,19 +77,20 @@ class CYScene extends Component {
 {/*VIRO NODE CONTAINING BASKETBALL STUFF AND CODE BUTTON*/}
 
       <ViroNode
-        position={[0,0,0]}
+        position={[0,0,-4]}
       >
 
+      
           <ViroText
-          text="What I love"
-          textAlign="center"
-          textAlignVertical="top"
-          textLineBreakMode="justify"
-          textClipMode="clipToBounds"
-          color="#000000"
-          width={4} height={4}
-          style={{fontFamily:"Arial", fontSize:20, color:"#000000"}}
-          position={[-.5,.4,-1]}
+            text="Basketball fan!!"
+            textAlign="center"
+            textAlignVertical="top"
+            textLineBreakMode="justify"
+            textClipMode="clipToBounds"
+            color="#000000"
+            width={1} height={1}
+            style={{fontFamily:"Garamond", fontSize:20, color:"#000000"}}
+            position={[0,.85,0]}
           />
 
           <ViroImage
@@ -82,75 +101,75 @@ class CYScene extends Component {
                 loop: true, 
                 delay: 0
               }}           
-              position={[-.5,.4,-1]}
+              position={[0,.05,0]}
               height={.3}
-              width={.7}
+              width={.5}
               transformBehaviors={["billboardY"]}
           />
 
+
           <ViroImage
-          source={require("../portal_res/Chad2DImages/viewcode.png")} 
-          onClick={this._handleClick}
-          position={[-.7,0,-1]}
-          height={.8}
-          width={.8}
-          transformBehaviors={["billboardY"]}
+            source={require("../portal_res/Chad2DImages/viewcode.png")} 
+            onClick={this._handleClick}
+            position={[0,.4,0]}
+            height={.4}
+            width={.4}
+            transformBehaviors={["billboardY"]}
 
           />
 
-      </ViroNode>
-      
-{/*VIRO NODE CONTAINING BASKETBALL STUFF AND CODE BUTTON END*/}
-
-{/*VIRO NODE CODE SHOTS OF BBALL STUFF*/}
-
-      <ViroNode
-      position={[-.7,0,-1]}      
-      >      
-
           <ViroImage
           source={require("../portal_res/Chad2DImages/codeshot1.png")} 
-          position={[2,.4,-1]}
-          height={.8}
-          width={.8}
+          position={[-.5,.05,0]}
+          height={.4}
+          width={.4}
           transformBehaviors={["billboardY"]}
           visible={this.state.showCode}
           />
 
           <ViroImage
           source={require("../portal_res/Chad2DImages/codeshot2.png")} 
-          position={[1,.4,-1]}
-          height={.8}
-          width={.8}
+          position={[.5,.05,0]}
+          height={.4}
+          width={.4}
           transformBehaviors={["billboardY"]}
           visible={this.state.showCode}
           />
 
       </ViroNode>
 
-{/*VIRO NODE CODE SHOTS OF BBALL STUFF*/}
+{/*END BBALL VIRONODE}*/}
 
-{/*VIRO NODE CONTAINING RESUME AND INFO*/}
+{/*START RESUME VIRONODE}*/}
 
       <ViroNode
-      position={[-6,0,3]}      
+      position={[-3,0,-3]}      
       >
 
-{/*VIRO IMAGE CONTAINING BUTTON TO FIND OUT MORE*/}
+        <ViroImage
+        source={require("../portal_res/Chad2DImages/findoutmore.png")} 
+        onClick={this._handleResumeClick}  
+        // visible={this.state.showResumeButton}    
+        position={[0,.05,0]}
+        height={.8}
+        width={.8}
+        transformBehaviors={["billboardY"]}
+        />
 
-      <ViroImage
-      source={require("../portal_res/Chad2DImages/findoutmore.png")}     
-      position={[1.5,-.8,-2]}
-      height={.8}
-      width={.8}
-      transformBehaviors={["billboardY"]}
-      />
-
-{/*VIRO IMAGE CONTAINING BUTTON TO FIND OUT MORE END*/}
+        <ViroImage
+        source={require("../portal_res/Chad2DImages/resume.png")} 
+        position={[.5,.05,0]}
+        // onClick={this._handleResumeButton}
+        height={.7}
+        width={.55}
+        transformBehaviors={["billboardY"]}
+        visible={this.state.showResume}
+        />
 
       </ViroNode>
 
-{/*VIRO NODE CONTAINING RESUME AND INFO END*/}
+{/*END RESUME VIRONODE}*/}
+
 
       </ViroPortalScene>
     );
@@ -181,7 +200,7 @@ ViroAnimations.registerAnimations({
 
 var styles = StyleSheet.create({
   helloWorldTextStyle: {
-  fontFamily: 'Arial',
+  fontFamily: 'Garamond',
   fontSize: 30,
   color: '#000000',
   textAlignVertical: 'center',
