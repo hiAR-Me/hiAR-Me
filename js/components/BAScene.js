@@ -158,11 +158,11 @@ class BAScene extends Component {
                   placeholderSource={require("../res/ViroNodes.png")}
                   source={require("../res/ViroNodes.png")}
                   transformBehaviors={["billboardY"]}/>
-                <ViroImage height={1.3} width={1.4} position={[0, 0, 0]}
+                <ViroImage height={1.3} width={1.4} position={[-1.8, 0, 0]}
                   placeholderSource={require("../res/BlueScreenShot.png")}
                   source={require("../res/BlueScreenShot.png")}
                   transformBehaviors={["billboardY"]}/>
-                <ViroImage height={1.3} width={2} position={[-1.8, 0, 0]}
+                <ViroImage height={1.3} width={2} position={[0, 0, 0]}
                   placeholderSource={require("../res/AnimationScreenShot.png")}
                   source={require("../res/AnimationScreenShot.png")}
                   transformBehaviors={["billboardY"]}/>
