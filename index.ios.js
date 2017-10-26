@@ -10,11 +10,15 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
+  Button,
   Text,
+  TextInput,
   View,
   StyleSheet,
   PixelRatio,
   TouchableHighlight,
+  Image,
+  Modal
 } from 'react-native';
 
 import {
@@ -22,9 +26,8 @@ import {
   ViroARSceneNavigator
 } from 'react-viro';
 
-/*
- TODO: Insert your API key below
- */
+import axios from 'axios'
+
 var sharedProps = {
   apiKey:"E177B403-DA0B-40C8-99A3-E390C500B559",
 }
@@ -45,61 +48,125 @@ export default class ViroSample extends Component {
   constructor() {
     super();
 
+
+// DONT FORGET TO MAKE COMMENTS INPUT FIELD
     this.state = {
       navigatorType : defaultNavigatorType,
-      sharedProps : sharedProps
+      sharedProps : sharedProps,
+      modalVisible : false,
+      typedName: "",
+      typedEmail: "",
+      typedComment: "",
+      visitor: {
+        id: null,
+        visitorName: "",
+        visitorEmail: "",
+        visitorComments: ""
+      }
     }
-    this._getExperienceSelector = this._getExperienceSelector.bind(this);
     this._getARNavigator = this._getARNavigator.bind(this);
-    this._getVRNavigator = this._getVRNavigator.bind(this);
-    this._getExperienceButtonOnPress = this._getExperienceButtonOnPress.bind(this);
+  }
+
+  // axios.post('http://localhost:8080', {
+  //     visitor: {
+  //       id: null,
+  //       visitorName: "",
+  //       visitorEmail: "",
+  //       visitorComments: ""
+  //     }
+  //   })
+  //   .then(function (response) {
+  //     console.log(response);
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
+
+
+  // Setup the onPress method for displaying a form for users to receive email with team member contact information.
+  setModalVisible = (visible) => {
+    this.setState({modalVisible: visible});
+  }
+
+  _handleSubmit = () => {
+    console.log('hello?')
+    this.setState({
+      visitor: {
+        visitorName: this.state.typedName,
+        visitorEmail: this.state.typedEmail
+      },
+      modalVisible: false
+  })
   }
 
   // Replace this function with the contents of _getVRNavigator() or _getARNavigator()
   // if you are building a specific type of experience.
   render() {
-    if (this.state.navigatorType == UNSET) {
-      return this._getExperienceSelector();
-    } else if (this.state.navigatorType == VR_NAVIGATOR_TYPE) {
-      return this._getVRNavigator();
-    } else if (this.state.navigatorType == AR_NAVIGATOR_TYPE) {
       return this._getARNavigator();
-    }
-  }
-
-  // Presents the user with a choice of an AR or VR experience
-  _getExperienceSelector() {
-    return (
-      <View style={localStyles.outer} >
-        <View style={localStyles.inner} >
-
-          <Text style={localStyles.titleText}>
-            Choose your desired experience:
-          </Text>
-
-          <TouchableHighlight style={localStyles.buttons}
-            onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
-            underlayColor={'#68a0ff'} >
-
-            <Text style={localStyles.buttonText}>AR</Text>
-          </TouchableHighlight>
-
-          <TouchableHighlight style={localStyles.buttons}
-            onPress={this._getExperienceButtonOnPress(VR_NAVIGATOR_TYPE)}
-            underlayColor={'#68a0ff'} >
-
-            <Text style={localStyles.buttonText}>VR</Text>
-          </TouchableHighlight>
-        </View>
-      </View>
-    );
   }
 
   // Returns the ViroARSceneNavigator which will start the AR experience
   _getARNavigator() {
+
     return (
-      <ViroARSceneNavigator {...this.state.sharedProps}
-        initialScene={{scene: InitialARScene}} />
+      <View style={localStyles.outer} >
+        <ViroARSceneNavigator {...this.state.sharedProps}
+          initialScene={{scene: InitialARScene}} />
+        <View style={{position: 'absolute', top: 20, right: 20, alignItems: 'center'}}>
+          <TouchableHighlight style={localStyles.formBtn}
+            onPress={() => {
+              this.setModalVisible(true)
+            }}
+            underlayColor={'#00000000'} >
+            <Text style={localStyles.buttonText}>+</Text>
+          </TouchableHighlight>
+
+          {/* This is invisible until the btn above is pressed  */}
+          <Modal
+          animationType="slide"
+          transparent={false}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {alert("Modal has been closed.")}}
+          >
+         <View style={{marginTop: 22}}>
+          <View style={{alignItems: 'center', marginTop: 10}}>
+            <Text style={{textAlign: 'center', margin: 20}}>Share your email address and name to recieve our team's contact information!</Text>
+
+            {/* Name */}
+            <TextInput
+              autoFocus= {true}
+              style={{height: 40, width: 300, borderColor: 'gray', borderWidth: 1, margin: 10}}
+              placeholder="Name"
+              label="name"
+              onChangeText={(name) => this.setState({typedName: name})}
+              value={this.state.typedName}
+            />
+
+            {/* Email */}
+            <TextInput
+              style={{height: 40, width: 300, borderColor: 'gray', borderWidth: 1}}
+              placeholder="Email Address"
+              label="email"
+              onChangeText={(email) => this.setState({typedEmail: email})}
+              value={this.state.typedEmail}
+            />
+
+            {/* Submit */}
+            <TouchableHighlight style={localStyles.buttons} onPress={this._handleSubmit}>
+              <Text style={localStyles.buttonText}>Submit</Text>
+            </TouchableHighlight>
+            {/* Cancel */}
+            <TouchableHighlight style={localStyles.buttons} onPress={() => {
+              this.setModalVisible(!this.state.modalVisible)
+            }}>
+              <Text style={localStyles.buttonText}>Cancel</Text>
+            </TouchableHighlight>
+
+          </View>
+         </View>
+        </Modal>
+        </View>
+      </View>
     );
   }
 
@@ -125,9 +192,6 @@ export default class ViroSample extends Component {
 var localStyles = StyleSheet.create({
   outer : {
     flex : 1,
-    flexDirection: 'row',
-    alignItems:'center',
-    backgroundColor: "black",
   },
   inner: {
     flex : 1,
@@ -148,12 +212,26 @@ var localStyles = StyleSheet.create({
     fontSize : 20
   },
   buttons : {
-    height: 80,
+    height: 50,
     width: 150,
-    paddingTop:20,
-    paddingBottom:20,
+    paddingTop:10,
+    paddingBottom:10,
     marginTop: 10,
     marginBottom: 10,
+    backgroundColor:'#68a0cf',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#fff',
+  },
+  formBtn : {
+    flex : 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 0,
+    padding: 0,
+    height: 40,
+    width: 40,
     backgroundColor:'#68a0cf',
     borderRadius: 10,
     borderWidth: 1,
