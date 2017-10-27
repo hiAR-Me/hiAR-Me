@@ -39,22 +39,11 @@ class CYScene extends Component {
     )
   }
 
-  // _handleResumeButton = (source) => {
-  //   if (this.state.showResumeButton === true){
-  //     this.setState({showResumeButton: false})
-  //   } else (
-  //     this.setState({showResumeButton: true})
-  //   )
-  // }
-
-
   render(){
     const { showCode } = this.state;
     return (
       <ViroPortalScene id= 'CYScene' passable={true}                  
       dragType="FixedDistance" onDrag={()=>{}}>
-
-{/*VIRO PORTAL*/}
 
       <ViroPortal position={[0, .2, -2]} scale={[.3, .3, .3]}>
       
@@ -66,8 +55,6 @@ class CYScene extends Component {
               />  
 
       </ViroPortal>
-
-{/*VIRO PORTAL END*/}
 
       {/*VIRO PORTAL 360 IMAGE BACKGROUND*/}
 
@@ -84,7 +71,6 @@ class CYScene extends Component {
         position={[0,0,-4]}
       >
 
-      
           <ViroText
             text="Basketball fan!!"
             textAlign="center"
@@ -123,7 +109,7 @@ class CYScene extends Component {
           />
 
           <ViroImage
-          source={require("../portal_res/Chad2DImages/codeshot1.png")} 
+          source={require("../portal_res/Chad2DImages/functionalmethods.png")} 
           position={[-.5,.05,0]}
           height={.4}
           width={.4}
@@ -132,7 +118,7 @@ class CYScene extends Component {
           />
 
           <ViroImage
-          source={require("../portal_res/Chad2DImages/codeshot2.png")} 
+          source={require("../portal_res/Chad2DImages/animations.png")} 
           position={[.5,.05,0]}
           height={.4}
           width={.4}
