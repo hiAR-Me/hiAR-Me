@@ -28,10 +28,14 @@ class CYScene extends Component {
   }
 
   _handleResumeClick = (source) => {
-    if (this.state.showResume === false) {
-      this.setState({showResume: true})
+    if (this.state.showResume === false && this.state.showResumeButton === true) {
+      this.setState({
+        showResume: true, 
+        showResumeButton: false})
     } else (
-      this.setState({showResume: false})
+      this.setState({
+        showResume: false, 
+        showResumeButton: true})
     )
   }
 
@@ -149,7 +153,7 @@ class CYScene extends Component {
         <ViroImage
         source={require("../portal_res/Chad2DImages/findoutmore.png")} 
         onClick={this._handleResumeClick}  
-        // visible={this.state.showResumeButton}    
+        visible={this.state.showResumeButton}    
         position={[0,.05,0]}
         height={.8}
         width={.8}
@@ -159,7 +163,7 @@ class CYScene extends Component {
         <ViroImage
         source={require("../portal_res/Chad2DImages/resume.png")} 
         position={[.5,.05,0]}
-        // onClick={this._handleResumeButton}
+        onClick={this._handleResumeClick}
         height={.7}
         width={.55}
         transformBehaviors={["billboardY"]}
