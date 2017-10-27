@@ -24,8 +24,8 @@ import {
 } from 'react-viro';
 
 import SmokeEmitter from './components/SmokeEmitter'
-// import MLScene from './components/MLScene'
-// import CYScene from './components/CYScene'
+import MLScene from './components/MLScene'
+import CYScene from './components/CYScene'
 import BAScene from './components/BAScene'
 
 class HelloWorldSceneAR extends Component{
@@ -39,8 +39,8 @@ constructor(){
     return (
       <ViroARScene onTrackingInitialized={()=>{this.setState({text : "hiAR.me"})}}>
         <ViroAmbientLight color="#ffffff" intensity={200}/>
-        {/* <MLScene /> */}
-        {/* <CYScene /> */}
+        <MLScene />
+        <CYScene />
         <BAScene />
       </ViroARScene>
     )
