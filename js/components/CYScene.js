@@ -59,7 +59,7 @@ class CYScene extends Component {
       {/*VIRO PORTAL 360 IMAGE BACKGROUND*/}
 
         <Viro360Image 
-          source={require("../portal_res/Chad360Scene/tiles.jpg")} 
+          source={require("../portal_res/Chad360Scene/360_blocks.jpg")} 
         />
 
       {/*VIRO PORTAL 360 IMAGE BACKGROUND END*/}
@@ -160,6 +160,26 @@ class CYScene extends Component {
 
 {/*END RESUME VIRONODE}*/}
 
+      <ViroNode
+      position={[3,0,-3]}      
+      >
+
+        <ViroImage
+        source={require("../res/hiAR_banner.png")} 
+        animation={{
+          name:'floatUpAndDown',
+          run:true, 
+          loop: true, 
+          delay: 0
+        }}
+        position={[.5,.05,0]}
+        height={1}
+        width={1.9}
+        transformBehaviors={["billboardY"]}
+        />
+
+      </ViroNode>
+
 
       </ViroPortalScene>
     );
@@ -184,7 +204,24 @@ ViroAnimations.registerAnimations({
     easing: "EaseIn",
     duration: 2000},
   getBiggerAndSmaller: [
-    ["getBigger", "getSmaller"]]
+    ["getBigger", "getSmaller"]],
+    
+  floatUp: {
+      properties:{
+        positionX: 0,
+        positionY: +1.25,
+        positionZ: 0},
+      easing: "EaseInEaseOut",
+      duration: 700},
+  floatDown: {
+      properties:{
+        positionX: 0,
+        positionY: -.05,
+        positionZ: 0},
+      easing: "EaseInEaseOut",
+      duration: 800},
+  floatUpAndDown: [
+      ["floatUp", "floatDown"]]
 });
   
 
@@ -200,53 +237,5 @@ var styles = StyleSheet.create({
 
 module.exports = CYScene;
 
-// <Viro360Image 
-// source={require("../portal_res/KohHong01.jpg")} 
-// rotation={[0, 45, 0]}
-// format="RGBA8"
-// />
 
-// <ViroDirectionalLight
-// color="#ffffff"
-// direction={[0, -1, 0]}
-// />
 
-// <Viro3DObject 
-// source={require('../portal_res/Chad3DObjects/mr_krab.obj')}
-// resources={[require('../portal_res/Chad3DObjResources/mr_krab.mtl'),
-// require('../portal_res/Chad3DObjResources/mrkrabs_d.png')]}
-// scale={[0.1, 0.1, 0.01]}
-// position={[0, 0, .3]}
-// type="OBJ" 
-// />
-
-// <Viro3DObject 
-// // source={require('../portal_res/Chad3DObjects/basketball.obj')}
-// // materials={["basketball"]}        
-// // animation={{
-// //   name: 'spinBall',
-// //   run: true,
-// //   loop: true,
-// //   delay: 0
-// // }}
-// // scale={[0.005, 0.005, 0.005]}
-// // position={[1, 0, -1]}
-// // type="OBJ" 
-// />
-
-// <ViroImage
-// source={require("../portal_res/Chad2DImages/basketballhoop.png")}     
-// position={[-.5,0,-1]}
-// height={.8}
-// width={.3}
-// transformBehaviors={["billboardY"]}
-
-// />
-
-// ViroMaterials.createMaterials({
-//   basketball: {
-//     shininess: 2.0,
-//     lightingModel: "Lambert",
-//     diffuseTexture: require('../portal_res/ChadTextures/orangecolor.jpg'),
-//   }
-// });
