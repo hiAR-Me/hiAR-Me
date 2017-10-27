@@ -15,7 +15,7 @@ class CYScene extends Component {
     this.state = {
       showCode: false , 
       showResume: false,
-      showResumeButton: true 
+      showResumeButton: true   
     }
   }
 

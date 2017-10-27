@@ -151,6 +151,16 @@ export default class ViroSample extends Component {
               value={this.state.typedEmail}
             />
 
+            {/* Comments */}
+              <TextInput
+                style={{height: 100, width: 300, marginTop: 10, borderColor: 'gray', borderWidth: 1}}
+                placeholder="Any additional comments?"
+                multiline= {true}
+                label="email"
+                onChangeText={(email) => this.setState({typedEmail: email})}
+                value={this.state.typedEmail}
+              />
+
             {/* Submit */}
             <TouchableHighlight style={localStyles.buttons} onPress={this._handleSubmit}>
               <Text style={localStyles.buttonText}>Submit</Text>
