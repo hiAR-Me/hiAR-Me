@@ -4,6 +4,7 @@ import React, {Component} from 'react';
 import {StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {ViroParticleEmitter, ViroNode, ViroSpotLight} from 'react-viro';
+// import MLportal from './MLportal'
 
 var SmokeEmitter = React.createClass({
     location: PropTypes.arrayOf(PropTypes.number),
@@ -12,12 +13,12 @@ var SmokeEmitter = React.createClass({
 
     render: function () {
       return (
-        <ViroNode>
+        <ViroNode position={[0, 0, -2]}>
           <ViroParticleEmitter
-            position={this.props.location}
+            position={[0, 0, 0]}
             duration={1500}
             visible={true}
-            run={this.props.run}
+            run={true}
             loop={true}
             fixedToEmitter={false}
             image={{
@@ -50,6 +51,9 @@ var SmokeEmitter = React.createClass({
                 ]
             },
         }}/>
+
+        {/* <MLportal /> */}
+
       </ViroNode>
     );
     }
