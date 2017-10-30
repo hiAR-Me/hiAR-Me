@@ -92,25 +92,25 @@ class Tutorial extends Component {
     const text = dialog[counter];
     return (
       <ViroNode>
-        <ViroImage height={.6} width={.9} position={[3, .5, -1]} rotationZ={45}
+        <ViroImage height={.6} width={.9} position={[5, .5, -1]} rotationZ={45}
           placeholderSource={require("../res/hiAR_banner.png")}
           source={require("../res/hiAR_banner.png")}
           transformBehaviors={["billboardY"]}/>
 
-        <ViroImage height={.25} width={.6} position={[3, 0, -1]}
+        <ViroImage height={.25} width={.6} position={[5, 0, -1]}
           placeholderSource={require("../res/btn.png")}
           source={require("../res/btn.png")}
           transformBehaviors={["billboardY"]}
           onClick={this.handleClick}/>
 
-        <ViroImage height={.25} width={.6} position={[3, -.3, -1]}
+        <ViroImage height={.25} width={.6} position={[5, -.3, -1]}
           placeholderSource={require("../res/btn_blue.png")}
           source={require("../res/btn_blue.png")}
           transformBehaviors={["billboardY"]}
           onClick={this.handleBlueClick}
           visible={visibleBtn}/>
           {/* My Face and Chat Bubble */}
-          <ViroNode position={[4,0,0]}
+          <ViroNode position={[6,0,0]}
             transformBehaviors={["billboardY"]}>
             <ViroNode
               animation={{name: 'floatUpAndDown',
@@ -155,9 +155,9 @@ class Tutorial extends Component {
                   placeholderSource={require("../res/ViroNodes.png")}
                   source={require("../res/ViroNodes.png")}
                   transformBehaviors={["billboardY"]}/>
-                <ViroImage height={1.3} width={1.4} position={[-2.2, 0, 0]}
-                  placeholderSource={require("../res/BlueScreenShot.png")}
-                  source={require("../res/BlueScreenShot.png")}
+                <ViroImage height={1.6} width={1.4} position={[-2.2, 0, 0]}
+                  placeholderSource={require("../res/BAResume.png")}
+                  source={require("../res/BAResume.png")}
                   transformBehaviors={["billboardY"]}/>
                 <ViroImage height={1.3} width={2} position={[0, 0, 0]}
                   placeholderSource={require("../res/AnimationScreenShot.png")}
