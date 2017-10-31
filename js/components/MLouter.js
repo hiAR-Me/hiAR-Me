@@ -2,20 +2,54 @@
 
 import React, { Component } from 'react';
 
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import {
   ViroAnimations,
   ViroAmbientLight,
   ViroUtils,
   Viro3DObject,
-  ViroNode
+  ViroNode,
+  ViroImage
 } from 'react-viro';
 
 export default class MLouter extends Component{
+  constructor(props){
+    super(props)
+      this.state={
+        imgVisible: false,
+        asteroidVisible: true,
+        earthVisible: true,
+        moonVisible: true
+      }
+  }
+
+  handleMoonClick = (evt) => {
+    this.setState({
+      imgVisible: true,
+      asteroidVisible: false,
+      earthVisible: false,
+      moonVisible: false
+    })
+  }
+
+  handleResumeClick = (evt) => {
+    this.setState({
+      imgVisible: false,
+      asteroidVisible: true,
+      earthVisible: true,
+      moonVisible: true
+    })
+  }
+
   render(){
     return(
       <ViroNode>
+
+        <ViroImage position={[0, 0, -1]}
+          source={require('../assets/lepineresume.png')}
+          visible={this.state.imgVisible}
+          onClick={this.handleResumeClick}/>
 
         <Viro3DObject
           source={require('../res/Asteroid/asteroid.obj')}
@@ -26,6 +60,7 @@ export default class MLouter extends Component{
             require('../res/Asteroid/Map__4_Mix.jpg')
           ]}
           type="OBJ"
+          visible={this.state.asteroidVisible}
           position={[ -5, 0, -10]}
           scale={[ .05, .05, .05]}
           animation={{
@@ -42,31 +77,33 @@ export default class MLouter extends Component{
             require('../res/Moon/moon-normal.jpg')
           ]}
           type="OBJ"
+          visible={this.state.moonVisible}
           position={[ 5, 0, -10]}
           scale={[ .01, .01, .01]}
           animation={{
             name: 'rotateMoon',
             run: true,
             loop: true
-          }}/>
+          }}
+          onClick={this.handleMoonClick}/>
 
-          <Viro3DObject
-            source={require('../res/Earth/earth.obj')}
-            resources={[
-              require('../res/Earth/earth.mtl'),
-              require('../res/Earth/4096_bump.jpg'),
-              require('../res/Earth/4096_earth.jpg'),
-              require('../res/Earth/4096_night_lights.jpg'),
-              require('../res/Earth/4096_normal.jpg'),
-            ]}
-            type="OBJ"
-            position={[ 0, 0, -15]}
-            scale={[ .005, .005, .005]}
-            animation={{
-              name: 'rotateEarth',
-              run: true,
-              loop: true
-            }}/>
+        <Viro3DObject
+          source={require('../res/Earth/earth.obj')}
+          resources={[
+            require('../res/Earth/earth.mtl'),
+            require('../res/Earth/4096_bump.jpg'),
+            require('../res/Earth/4096_earth.jpg'),              require('../res/Earth/4096_night_lights.jpg'),
+            require('../res/Earth/4096_normal.jpg'),
+          ]}
+          type="OBJ"
+          visible={this.state.earthVisible}
+          position={[ 0, 0, -15]}
+          scale={[ .005, .005, .005]}
+          animation={{
+            name: 'rotateEarth',
+            run: true,
+            loop: true
+          }}/>
 
       </ViroNode>
     )
