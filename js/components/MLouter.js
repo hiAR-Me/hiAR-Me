@@ -21,9 +21,7 @@ export default class MLouter extends Component{
         asteroidVisible: true,
         earthVisible: true,
         moonVisible: true,
-        asteroidText: '',
-        earthText: 'Resume',
-        moonText: 'Portfolio'
+
       }
   }
 
