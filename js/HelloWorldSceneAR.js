@@ -25,8 +25,10 @@ import {
 
 import SmokeEmitter from './components/SmokeEmitter'
 // import MLScene from './components/MLScene'
-// import CYScene from './components/CYScene'
-import BAScene from './components/BAScene'
+import CYScene from './components/CYScene'
+// import BAScene from './components/BAScene'
+import ChrisResume from './components/ChrisResume'
+
 
 class HelloWorldSceneAR extends Component{
 constructor(){
@@ -40,8 +42,9 @@ constructor(){
       <ViroARScene onTrackingInitialized={()=>{this.setState({text : "hiAR.me"})}}>
         <ViroAmbientLight color="#ffffff" intensity={200}/>
         {/* <MLScene /> */}
-        {/* <CYScene /> */}
-        <BAScene />
+        <CYScene />
+        {/* <BAScene /> */}
+        <ChrisResume/>
       </ViroARScene>
     )
   }

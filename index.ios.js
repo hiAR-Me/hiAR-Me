@@ -148,7 +148,7 @@ export default class ViroSample extends Component {
               placeholder="Email Address"
               label="email"
               onChangeText={(email) => this.setState({typedEmail: email})}
-              value={this.state.typedEmail}
+              value={this.state.typedComment}
             />
 
             {/* Comments */}
