@@ -1,27 +1,16 @@
 // MLportal.js
 
-
 import React, { Component } from 'react';
 
 import {StyleSheet} from 'react-native';
 
 import {
-  ViroARPlane,
-  ViroARScene,
-  ViroText,
-  ViroVideo,
-  ViroAnimations,
-  ViroSceneNavigator,
-  ViroScene,
-  ViroAmbientLight,
-  Viro360Video,
   Viro360Image,
   ViroUtils,
   ViroPortal,
   ViroPortalScene,
   Viro3DObject,
-  ViroNode,
-  ViroSpotLight
+  ViroNode
 } from 'react-viro';
 
 import MLouter from './MLouter'
