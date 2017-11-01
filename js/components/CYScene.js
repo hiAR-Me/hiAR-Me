@@ -13,15 +13,15 @@ class CYScene extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showCode: false , 
+      showCode: false ,
       showResume: false,
-      showResumeButton: true     
+      showResumeButton: true
     }
   }
 
   _handleClick = (source) => {
     if (this.state.showCode === false) {
-      this.setState({showCode: true})      
+      this.setState({showCode: true})
     } else (
       this.setState({showCode: false})
     )
@@ -30,11 +30,11 @@ class CYScene extends Component {
   _handleResumeClick = (source) => {
     if (this.state.showResume === false && this.state.showResumeButton === true) {
       this.setState({
-        showResume: true, 
+        showResume: true,
         showResumeButton: false})
     } else (
       this.setState({
-        showResume: false, 
+        showResume: false,
         showResumeButton: true})
     )
   }
@@ -42,24 +42,24 @@ class CYScene extends Component {
   render(){
     const { showCode } = this.state;
     return (
-      <ViroPortalScene id= 'CYScene' passable={true}                  
+      <ViroPortalScene id= 'CYScene' passable={true}
       dragType="FixedDistance" onDrag={()=>{}}>
 
-      <ViroPortal position={[0, .2, -2]} scale={[.3, .3, .3]}>
-      
+      <ViroPortal position={[-1, 0, 0]} scale={[.3, .3, .3]} rotation={[0, 90, 0]}>
+
               <Viro3DObject source={require('../portal_res/portal_archway/portal_archway.vrx')}
                     resources={[require('../portal_res/portal_archway/portal_archway_diffuse.png'),
                     require('../portal_res/portal_archway/portal_archway_normal.png'),
                     require('../portal_res/portal_archway/portal_archway_specular.png')]}
                   type="VRX"
-              />  
+              />
 
       </ViroPortal>
 
       {/*VIRO PORTAL 360 IMAGE BACKGROUND*/}
 
-        <Viro360Image 
-          source={require("../portal_res/Chad360Scene/360_blocks.jpg")} 
+        <Viro360Image
+          source={require("../portal_res/Chad360Scene/360_blocks.jpg")}
         />
 
       {/*VIRO PORTAL 360 IMAGE BACKGROUND END*/}
@@ -87,10 +87,10 @@ class CYScene extends Component {
               source={require("../portal_res/Chad2DImages/kobe.png")}
               animation={{
                 name:'getBiggerAndSmaller',
-                run:true, 
-                loop: true, 
+                run:true,
+                loop: true,
                 delay: 0
-              }}           
+              }}
               position={[0,.05,0]}
               height={.3}
               width={.5}
@@ -99,7 +99,7 @@ class CYScene extends Component {
 
 
           <ViroImage
-            source={require("../portal_res/Chad2DImages/viewcode.png")} 
+            source={require("../portal_res/Chad2DImages/viewcode.png")}
             onClick={this._handleClick}
             position={[0,.4,0]}
             height={.4}
@@ -109,7 +109,7 @@ class CYScene extends Component {
           />
 
           <ViroImage
-          source={require("../portal_res/Chad2DImages/functionalmethods.png")} 
+          source={require("../portal_res/Chad2DImages/functionalmethods.png")}
           position={[-.5,.05,0]}
           height={.4}
           width={.4}
@@ -118,7 +118,7 @@ class CYScene extends Component {
           />
 
           <ViroImage
-          source={require("../portal_res/Chad2DImages/animations.png")} 
+          source={require("../portal_res/Chad2DImages/animations.png")}
           position={[.5,.05,0]}
           height={.4}
           width={.4}
@@ -133,13 +133,13 @@ class CYScene extends Component {
 {/*START RESUME VIRONODE}*/}
 
       <ViroNode
-      position={[-3,0,-3]}      
+      position={[-3,0,-3]}
       >
 
         <ViroImage
-        source={require("../portal_res/Chad2DImages/findoutmore.png")} 
-        onClick={this._handleResumeClick}  
-        visible={this.state.showResumeButton}    
+        source={require("../portal_res/Chad2DImages/findoutmore.png")}
+        onClick={this._handleResumeClick}
+        visible={this.state.showResumeButton}
         position={[0,.05,0]}
         height={.8}
         width={.8}
@@ -147,7 +147,7 @@ class CYScene extends Component {
         />
 
         <ViroImage
-        source={require("../portal_res/Chad2DImages/resume.png")} 
+        source={require("../portal_res/Chad2DImages/resume.png")}
         position={[.5,.05,0]}
         onClick={this._handleResumeClick}
         height={.7}
@@ -161,15 +161,15 @@ class CYScene extends Component {
 {/*END RESUME VIRONODE}*/}
 
       <ViroNode
-      position={[3,0,-3]}      
+      position={[3,0,-3]}
       >
 
         <ViroImage
-        source={require("../res/hiAR_banner.png")} 
+        source={require("../res/hiAR_banner.png")}
         animation={{
           name:'floatUpAndDown',
-          run:true, 
-          loop: true, 
+          run:true,
+          loop: true,
           delay: 0
         }}
         position={[.5,.05,0]}
@@ -205,7 +205,7 @@ ViroAnimations.registerAnimations({
     duration: 2000},
   getBiggerAndSmaller: [
     ["getBigger", "getSmaller"]],
-    
+
   floatUp: {
       properties:{
         positionX: 0,
@@ -223,7 +223,7 @@ ViroAnimations.registerAnimations({
   floatUpAndDown: [
       ["floatUp", "floatDown"]]
 });
-  
+
 
 var styles = StyleSheet.create({
   helloWorldTextStyle: {
@@ -236,6 +236,3 @@ var styles = StyleSheet.create({
 });
 
 module.exports = CYScene;
-
-
-
