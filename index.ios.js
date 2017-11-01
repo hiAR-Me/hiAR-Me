@@ -58,20 +58,18 @@ export default class ViroSample extends Component {
       typedEmail: "",
       typedComment: "",
       visitor: {
-        id: null,
-        visitorName: "",
         visitorEmail: "",
+        visitorName: "",
         visitorComments: ""
       }
     }
     this._getARNavigator = this._getARNavigator.bind(this);
   }
 
-  // axios.post('http://localhost:8080', {
+  // axios.post('http://localhost:8080/send_simple_email', {
   //     visitor: {
-  //       id: null,
-  //       visitorName: "",
   //       visitorEmail: "",
+  //       visitorName: "",
   //       visitorComments: ""
   //     }
   //   })
