@@ -68,7 +68,8 @@ class CYScene extends Component {
 {/*VIRO NODE CONTAINING BASKETBALL STUFF AND CODE BUTTON*/}
 
       <ViroNode
-        position={[0,0,-4]}
+        position={[-4,0,0]}
+        transformBehaviors={["billboardY"]}
       >
 
           <ViroText
@@ -94,7 +95,6 @@ class CYScene extends Component {
               position={[0,.05,0]}
               height={.3}
               width={.5}
-              transformBehaviors={["billboardY"]}
           />
 
 
@@ -104,7 +104,6 @@ class CYScene extends Component {
             position={[0,.4,0]}
             height={.4}
             width={.4}
-            transformBehaviors={["billboardY"]}
 
           />
 
@@ -113,7 +112,6 @@ class CYScene extends Component {
           position={[-.5,.05,0]}
           height={.4}
           width={.4}
-          transformBehaviors={["billboardY"]}
           visible={this.state.showCode}
           />
 
@@ -122,7 +120,6 @@ class CYScene extends Component {
           position={[.5,.05,0]}
           height={.4}
           width={.4}
-          transformBehaviors={["billboardY"]}
           visible={this.state.showCode}
           />
 
@@ -133,7 +130,7 @@ class CYScene extends Component {
 {/*START RESUME VIRONODE}*/}
 
       <ViroNode
-      position={[-3,0,-3]}
+      position={[-3,0,3]}
       >
 
         <ViroImage
@@ -150,8 +147,8 @@ class CYScene extends Component {
         source={require("../portal_res/Chad2DImages/resume.png")}
         position={[.5,.05,0]}
         onClick={this._handleResumeClick}
-        height={.7}
-        width={.55}
+        height={1.4}
+        width={1.1}
         transformBehaviors={["billboardY"]}
         visible={this.state.showResume}
         />
