@@ -29,7 +29,7 @@ class ChrisResume extends Component {
 
   render() {
     return (
-      <ViroNode position={[0,0,2]}
+      <ViroNode position={[0,0,3]}
         transformBehaviors={["billboardY"]}>
           <ViroImage height={1} width={.8} position={[0, 0, -.05]}
             placeholderSource={require("../res/ChrisResume.png")}
