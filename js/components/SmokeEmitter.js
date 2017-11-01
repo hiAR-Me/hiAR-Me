@@ -4,12 +4,11 @@ import React, {Component} from 'react';
 import {StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {ViroParticleEmitter, ViroNode, ViroSpotLight} from 'react-viro';
-// import MLportal from './MLportal'
 
 var SmokeEmitter = React.createClass({
-    location: PropTypes.arrayOf(PropTypes.number),
-    run: PropTypes.bool,
-    power: PropTypes.number,
+  location: PropTypes.arrayOf(PropTypes.number),
+  run: PropTypes.bool,
+  power: PropTypes.number,
 
     render: function () {
       return (
@@ -27,36 +26,29 @@ var SmokeEmitter = React.createClass({
               width: 1.5
             }}
             spawnBehavior={{
-            particleLifetime: [
-                1500, 1500
-            ],
-            emissionRatePerSecond: [
-                70, 80
-            ],
+            particleLifetime: [ 1500, 1500 ],
+            emissionRatePerSecond: [ 70, 80 ],
             maxParticles: 800
             }}
             particlePhysics={{
-            velocity: {
+              velocity: {
                 initialRange: [
-                    [
-                        -.25 * this.props.power,
-                        -1 * this.props.power,
-                        -.25 * this.props.power
-                    ],
-                    [
-                        .25 * this.props.power,
-                        -1 * this.props.power,
-                        .25 * this.props.power
-                    ]
+                  [ -.25 * this.props.power,
+                    -1 * this.props.power,
+                    -.25 * this.props.power],
+
+                  [ .25 * this.props.power,
+                    -1 * this.props.power,
+                    .25 * this.props.power
+                  ]
                 ]
-            },
-        }}/>
-
-        {/* <MLportal /> */}
-
-      </ViroNode>
-    );
+              },
+            }}
+          />
+        </ViroNode>
+      )
     }
-});
+  }
+)
 
 module.exports = SmokeEmitter;

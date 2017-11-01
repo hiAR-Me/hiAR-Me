@@ -20,8 +20,7 @@ export default class MLouter extends Component{
         imgVisible: false,
         asteroidVisible: true,
         earthVisible: true,
-        moonVisible: true,
-
+        moonVisible: true
       }
   }
 
