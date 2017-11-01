@@ -19,11 +19,11 @@ export default class MLufo extends Component {
       <ViroNode position={[ 0, 0, 0]} transformBehaviors={'billboardY'}>
         <Viro3DObject source={require('../portal_res/portal_ufo/ufo.obj')}
           resources={[require('../portal_res/portal_ufo/ufo_diffuse2_glow.png'),
-                       require('../portal_res/portal_ufo/ufo_diffuse.png'),
-                       require('../portal_res/portal_ufo/ufo_diffuse2.png'),
-                       require('../portal_res/portal_ufo/ufo_diffuse_glow.png'),
-                       require('../portal_res/portal_ufo/ufo_normal.png'),
-                       require('../portal_res/portal_ufo/ufo_spec.png')]}
+            require('../portal_res/portal_ufo/ufo_diffuse.png'),
+            require('../portal_res/portal_ufo/ufo_diffuse2.png'),
+            require('../portal_res/portal_ufo/ufo_diffuse_glow.png'),
+            require('../portal_res/portal_ufo/ufo_normal.png'),
+            require('../portal_res/portal_ufo/ufo_spec.png')]}
           position={[ 0, .2, -3]}
           scale={[.05, .05, .05]}
           animation={{

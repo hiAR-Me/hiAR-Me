@@ -29,7 +29,6 @@ import CYScene from './components/CYScene'
 import BAScene from './components/BAScene'
 import ChrisResume from './components/ChrisResume'
 
-
 class HelloWorldSceneAR extends Component{
 constructor(){
   super()
@@ -44,7 +43,7 @@ constructor(){
         <MLScene />
         <CYScene />
         <BAScene />
-        <ChrisResume/>
+        <ChrisResume />
       </ViroARScene>
     )
   }
