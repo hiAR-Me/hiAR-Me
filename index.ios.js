@@ -54,24 +54,17 @@ export default class ViroSample extends Component {
       navigatorType : defaultNavigatorType,
       sharedProps : sharedProps,
       modalVisible : false,
-      typedName: "",
-      typedEmail: "",
-      typedComment: "",
-      visitor: {
-        id: null,
-        visitorName: "",
-        visitorEmail: "",
-        visitorComments: ""
-      }
+      visitorEmail: "",
+      visitorName: "",
+      visitorComments: ""
     }
     this._getARNavigator = this._getARNavigator.bind(this);
   }
 
-  // axios.post('http://localhost:8080', {
+  // axios.post('http://localhost:8080/send_simple_email', {
   //     visitor: {
-  //       id: null,
-  //       visitorName: "",
   //       visitorEmail: "",
+  //       visitorName: "",
   //       visitorComments: ""
   //     }
   //   })
@@ -90,13 +83,21 @@ export default class ViroSample extends Component {
 
   _handleSubmit = () => {
     console.log('hello?')
-    this.setState({
-      visitor: {
-        visitorName: this.state.typedName,
-        visitorEmail: this.state.typedEmail
-      },
-      modalVisible: false
-  })
+
+    axios.post('http://172.20.10.4:8080/send_simple_email', {
+      visitorName: this.state.visitorName,
+      visitorEmail: this.state.visitorEmail,
+      visitorComments: this.state.visitorComments
+    }).then((res)=>{
+
+      this.setState({
+        visitorName: "",
+        visitorEmail: "",
+        visitorComments: "",
+        modalVisible: false
+      })
+    }).catch(err => alert(JSON.stringify(err)))
+
   }
 
   // Replace this function with the contents of _getVRNavigator() or _getARNavigator()
@@ -138,8 +139,8 @@ export default class ViroSample extends Component {
               style={{height: 40, width: 300, borderColor: 'gray', borderWidth: 1, margin: 10}}
               placeholder="Name"
               label="name"
-              onChangeText={(name) => this.setState({typedName: name})}
-              value={this.state.typedName}
+              onChangeText={(name) => this.setState({visitorName: name})}
+              value={this.state.visitorName}
             />
 
             {/* Email */}
@@ -147,8 +148,8 @@ export default class ViroSample extends Component {
               style={{height: 40, width: 300, borderColor: 'gray', borderWidth: 1}}
               placeholder="Email Address"
               label="email"
-              onChangeText={(email) => this.setState({typedEmail: email})}
-              value={this.state.typedComment}
+              onChangeText={(email) => this.setState({visitorEmail: email})}
+              value={this.state.visitorEmail}
             />
 
             {/* Comments */}
@@ -156,9 +157,9 @@ export default class ViroSample extends Component {
                 style={{height: 100, width: 300, marginTop: 10, borderColor: 'gray', borderWidth: 1}}
                 placeholder="Any additional comments?"
                 multiline= {true}
-                label="email"
-                onChangeText={(email) => this.setState({typedEmail: email})}
-                value={this.state.typedEmail}
+                label="comment"
+                onChangeText={(comment) => this.setState({visitorComments: comment})}
+                value={this.state.visitorComments}
               />
 
             {/* Submit */}
